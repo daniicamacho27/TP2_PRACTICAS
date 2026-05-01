@@ -14,25 +14,25 @@
         </div>
         <div class="filtros">
             <div class="filtro-group">
-                <label>Categoría</label>
-                <select id="filtroCategoria">
+                <label>Categoría <span style="font-size: 11px; color: #ec4899;"></span></label>
+                <select id="filtroCategoria" title="Selecciona una categoría para filtrar">
                     <option value="todas">Todas las categorías</option>
                 </select>
             </div>
             <div class="filtro-group">
-                <label>Precio máximo <span id="precioMostrado" class="precio-valor">$500</span></label>
-                <input type="range" id="filtroPrecio" min="0" max="500" value="500" step="10">
+                <label>Precio máximo <span id="precioMostrado" class="precio-valor">$500</span> </label>
+                <input type="range" id="filtroPrecio" min="0" max="500" value="500" step="10" title="Arrastra para cambiar el precio máximo">
             </div>
             <div class="filtro-group">
-                <label>Stock</label>
+                <label>Stock </label>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="filtroStock">
+                    <input type="checkbox" id="filtroStock" title="Marca para ver solo productos disponibles">
                     <label>Mostrar solo productos en stock</label>
                 </div>
             </div>
             <div class="filtro-group">
-                <label>Búsqueda</label>
-                <input type="text" id="filtroBusqueda" class="search-input" placeholder="Buscar por nombre...">
+                <label>Búsqueda 🔍</label>
+                <input type="text" id="filtroBusqueda" class="search-input" placeholder="Buscar por nombre..." title="Escribe el nombre del producto">
             </div>
         </div>
         <div id="productosContainer" class="productos-grid"></div>
