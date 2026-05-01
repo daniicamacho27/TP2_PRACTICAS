@@ -7,6 +7,7 @@ http://127.0.0.1:5500/api-demo.html
 
 ## Descripción del Proyecto
 **JS Mini Apps** es un conjunto de tres aplicaciones web interactivas desarrolladas con **JavaScript ES6+**, **HTML5** y **CSS3**. Cada una implementa distintos conceptos clave del desarrollo frontend moderno, incluyendo manipulación del DOM, eventos, programación asincrónica y consumo de APIs.
+https://daniicamacho27.github.io/TP2_PRACTICAS/
 
 ## Diseño
 1. Paleta de colores
