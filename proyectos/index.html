@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Apps | Sistema de Productos, Tareas y API</title>
+    <link rel="stylesheet" href="css/app.css">
+    <style>
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .app-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid #f3d4e6;
+            text-decoration: none;
+            display: block;
+        }
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        .app-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        .app-card h2 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        .app-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        .btn-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            display: inline-block;
+        }
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>JS Mini Apps</h1>
+            <p class="subtitulo">Tres aplicaciones interactivas con JavaScript ES6+</p>
+        </div>
+        <div class="cards-container">
+            <a href="productos.html" class="app-card">
+                <div class="app-icon"></div>
+                <h2>Sistema de Productos</h2>
+                <p>Catálogo con filtros en tiempo real</p>
+                <span class="btn-card">Ver Productos →</span>
+            </a>
+            <a href="todo.html" class="app-card">
+                <div class="app-icon"></div>
+                <h2>Lista de Tareas</h2>
+                <p>Organiza tus tareas diarias</p>
+                <span class="btn-card">Ver Tareas →</span>
+            </a>
+            <a href="api-demo.html" class="app-card">
+                <div class="app-icon"></div>
+                <h2>API Usuarios</h2>
+                <p>Consume API JSONPlaceholder</p>
+                <span class="btn-card">Ver Usuarios →</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
