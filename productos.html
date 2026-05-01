@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Productos | Tienda Premium</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Tienda Premium</h1>
+            <p class="subtitulo">Sistema de filtrado interactivo en tiempo real</p>
+        </div>
+        <div class="filtros">
+            <div class="filtro-group">
+                <label>Categoría</label>
+                <select id="filtroCategoria">
+                    <option value="todas">Todas las categorías</option>
+                </select>
+            </div>
+            <div class="filtro-group">
+                <label>Precio máximo <span id="precioMostrado" class="precio-valor">$500</span></label>
+                <input type="range" id="filtroPrecio" min="0" max="500" value="500" step="10">
+            </div>
+            <div class="filtro-group">
+                <label>Stock</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="filtroStock">
+                    <label>Mostrar solo productos en stock</label>
+                </div>
+            </div>
+            <div class="filtro-group">
+                <label>Búsqueda</label>
+                <input type="text" id="filtroBusqueda" class="search-input" placeholder="Buscar por nombre...">
+            </div>
+        </div>
+        <div id="productosContainer" class="productos-grid"></div>
+        <div id="stats" class="stats"></div>
+    </div>
+    <script>
+        const productos = [
+            { id: 1, nombre: "Laptop Gaming Pro", precio: 1200, categoria: "electrónica", enStock: true },
+            { id: 2, nombre: "Mouse Inalámbrico", precio: 45, categoria: "accesorios", enStock: true },
+            { id: 3, nombre: "Teclado Mecánico RGB", precio: 89, categoria: "accesorios", enStock: false },
+            { id: 4, nombre: "Monitor 4K 24\"", precio: 250, categoria: "electrónica", enStock: true },
+            { id: 5, nombre: "Silla Ergonómica", precio: 350, categoria: "muebles", enStock: true },
+            { id: 6, nombre: "Auriculares ANC", precio: 79, categoria: "accesorios", enStock: true },
+            { id: 7, nombre: "Webcam 4K", precio: 65, categoria: "electrónica", enStock: false },
+            { id: 8, nombre: "Escritorio Premium", precio: 180, categoria: "muebles", enStock: true },
+            { id: 9, nombre: "SSD 1TB NVMe", precio: 120, categoria: "electrónica", enStock: true },
+            { id: 10, nombre: "Mousepad XXL", precio: 25, categoria: "accesorios", enStock: true },
+            { id: 11, nombre: "Micrófono USB", precio: 95, categoria: "electrónica", enStock: false },
+            { id: 12, nombre: "Lámpara LED", precio: 35, categoria: "muebles", enStock: true }
+        ];
+        const categorias = [...new Set(productos.map(p => p.categoria))];
+        const selectCategoria = document.getElementById('filtroCategoria');
+        categorias.forEach(categoria => {
+            const option = document.createElement('option');
+            option.value = categoria;
+            option.textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1);
+            selectCategoria.appendChild(option);
+        });
+        const container = document.getElementById('productosContainer');
+        const filtroCategoria = document.getElementById('filtroCategoria');
+        const filtroPrecio = document.getElementById('filtroPrecio');
+        const precioMostrado = document.getElementById('precioMostrado');
+        const filtroStock = document.getElementById('filtroStock');
+        const filtroBusqueda = document.getElementById('filtroBusqueda');
+        const statsDiv = document.getElementById('stats');
+        const actualizarStats = (filtrados) => {
+            const total = filtrados.length;
+            const totalOriginal = productos.length;
+            statsDiv.innerHTML = `Mostrando <span>${total}</span> de <span>${totalOriginal}</span> productos`;
+        };
+        const renderizarProductos = (productosFiltrados) => {
+            actualizarStats(productosFiltrados);
+            if (productosFiltrados.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📦</div><p>No hay productos que coincidan con los filtros seleccionados</p></div>';
+                return;
+            }
+            container.innerHTML = productosFiltrados.map(producto => `
+                <div class="tarjeta ${!producto.enStock ? 'sin-stock' : ''}">
+                    <span class="id-producto">#${producto.id}</span>
+                    <h3>${producto.nombre}</h3>
+                    <div class="precio">${producto.precio}</div>
+                    <span class="categoria">${producto.categoria}</span>
+                    <div>
+                        <span class="stock ${producto.enStock ? 'en-stock' : 'agotado'}">
+                            ${producto.enStock ? 'En stock' : 'Agotado'}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        };
+        const filtrarProductos = () => {
+            const categoria = filtroCategoria.value;
+            const precioMax = parseFloat(filtroPrecio.value);
+            const soloStock = filtroStock.checked;
+            const busqueda = filtroBusqueda.value.toLowerCase().trim();
+            let productosFiltrados = [...productos];
+            if (categoria !== 'todas') {
+                productosFiltrados = productosFiltrados.filter(p => p.categoria === categoria);
+            }
+            productosFiltrados = productosFiltrados.filter(p => p.precio <= precioMax);
+            if (soloStock) {
+                productosFiltrados = productosFiltrados.filter(p => p.enStock === true);
+            }
+            if (busqueda !== '') {
+                productosFiltrados = productosFiltrados.filter(p => 
+                    p.nombre.toLowerCase().includes(busqueda)
+                );
+            }
+            renderizarProductos(productosFiltrados);
+        };
+        const actualizarPrecioMostrado = () => {
+            const valor = filtroPrecio.value;
+            precioMostrado.textContent = `$${valor}`;
+            filtrarProductos();
+        };
+        filtroCategoria.addEventListener('change', filtrarProductos);
+        filtroPrecio.addEventListener('input', actualizarPrecioMostrado);
+        filtroStock.addEventListener('change', filtrarProductos);
+        filtroBusqueda.addEventListener('input', filtrarProductos);
+        renderizarProductos(productos);
+    </script>
+</body>
+</html>
