@@ -22,5 +22,65 @@ Funcionalidades:
 4. Filtro por stock con checkbox
 5. Búsqueda por nombre en tiempo real
 6. Aplicación de filtros combinados
+Productos incluidos:
+* Laptop Gaming
+* Mouse Inalámbrico
+* Teclado Mecánico
+* Monitor 4K
+* Silla Ergonómica
+* Auriculares ANC
+* Webcam 4K
+* Escritorio Premium
+* SSD 1TB
+* Mousepad XXL
+* Micrófono USB
+* Lámpara LED
+
+2. Lista de Tareas (To-Do): Aplicación interactiva que permite gestionar tareas diarias de forma dinámica, sin recargar la página.
+Funcionalidades:
+1. Agregar tareas con validación (preventDefault)
+2. Crear elementos dinámicamente con createElement()
+3. Marcar tareas como completadas con classList.toggle()
+4. Eliminar tareas individuales con .remove()
+5. Contador dinámico de tareas pendientes
+6. Eliminación de tareas completadas
+
+3. API Usuarios: Aplicación que consume una API pública para mostrar información de usuarios en tiempo real.
+API utilizada:
+JSONPlaceholder (endpoint de usuarios)
+Funcionalidades:
+1. Consumo de API con fetch() y async/await
+2. Validación de response.ok
+3. Manejo de errores con try/catch
+4. Estado de carga ("Cargando...")
+5. Renderizado dinámico con .map()
+6. Mensaje de error en caso de fallo
+7. Búsqueda dinámica:
+ * Mínimo 3 caracteres
+ * Estado "Buscando..."
+ * Filtrado local con .filter()
+ * Mensaje si no hay resultados
+
+## Tecnologías Usadas
+El proyecto fue desarrollado utilizando HTML5 para la estructura, CSS3 para el diseño responsive y JavaScript ES6+ para la lógica.
+Se utilizaron métodos de arrays como .map(), .filter(), .reduce() y .find(), junto con la Fetch API para consumir datos externos y eventos como click, input y submit para lograr interacción en tiempo real.
+
+## Capturas 
+1. Sistema de productos
+![Productos](./fotos/productos.png)
+2. Lista de tareas
+![Todo](./fotos/todo.png)
+3. API Usuarios 
+![API Demo](./fotos/api.png)
+
+## Instrucciones de uso
+1. Clonar el repositorio
+2. Abrir en Visual Studio Code
+3. Ejecutar con Live Server
+4. Navegar entre las páginas
+
+## Conclusión
+“Proyecto desarrollado como trabajo práctico integrador de la Unidad 2 — Programador Junior.”
+
 
 
