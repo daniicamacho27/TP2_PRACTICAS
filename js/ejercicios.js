@@ -38,3 +38,8 @@ console.log("Alumnos aprobados: ", filtrarAprobados(alumnosPrueba));
 console.log("Buscar `Carlos`: ", buscarAlumno(alumnosPrueba, "Carlos"));
 console.log("Buscar `Ana`: ", buscarAlumno(alumnosPrueba, "Ana"));
 console.log("Buscar `Fabian` (no existe): ", buscarAlumno(alumnosPrueba, "Fabian"));
+hola 
+como 
+juan
+pedro 
+sss4
